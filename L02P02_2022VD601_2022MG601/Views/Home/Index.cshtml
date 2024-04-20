@@ -1,8 +1,41 @@
-﻿@{
+﻿using L02P02_2022VD601_2022MG601.Models;
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+
+    <div class="d-flex">
+        <div class="col-6 pr-3">
+
+            <label for="Nombre:_">Nombre</label>
+            @Html.TextBox("txtNombre", "", new { @class = "form-control" })
+
+        </div>
+
+        <div class="col-6 pl-3">
+            <lable for="Apellido:_">Apellido</lable>
+            @Html.TextBox("txtApellido", "", new { @class = "form-control" })
+        </div>
+
+        <div>
+            <label for="Email:_">Email</label>
+            @Html.TextBox("txtEmail", "", new{@class = "form-control"})
+            <br/>
+            <label for="Direccion:_">Dirección</label>
+            @Html.TextBox("txtDireccion", "", new { @class = "form-control" })
+        </div>
+
+        <div class="d-flex">
+
+            <div>
+                <label for="Departamento:_"></label>
+                IEnumerable<clientes> strList = new List<clientes>{};
+
+            </div>
+
+        </div>
+    </div>
+
 </div>
