@@ -1,59 +1,90 @@
-﻿using L02P02_2022VD601_2022MG601.Models;
-
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="container">
-
-    <div class="d-flex">
-        <div class="col-6 pr-3">
-
-            <label for="Nombre:_">Nombre</label>
-            @Html.TextBox("txtNombre", "", new { @class = "form-control" })
-
+    <div>
+        <div class="p-3 mb-2 bg-primary text-white">
+            <img src="/css/UNICAES_Logo.png" class="rounded mx-auto d-block" height="100px" />
+            <h2 class="text-center">Creacion de Usuarios</h2>
+            <p class="text-center">ingrese los datos solicitados </p>
         </div>
+    </div>
 
-        <div class="col-6 pl-3">
-            <lable for="Apellido:_">Apellido</lable>
-            @Html.TextBox("txtApellido", "", new { @class = "form-control" })
-        </div>
 
-        <div>
-            <label for="Email:_">Email</label>
-            @Html.TextBox("txtEmail", "", new{@class = "form-control"})
-            <br/>
-            <label for="Direccion:_">Dirección</label>
-            @Html.TextBox("txtDireccion", "", new { @class = "form-control" })
-        </div>
 
-        <div class="d-flex">
 
-            <div>
-                <label for="Departamento:_">Departamentos</label>
-                @Html.DropDownList("id", ViewData["listadoDeDepartamento"] as SelectList, "Seleccione un departamento", new {@class = "form-control" })
-            </div>
+    <div>
+        <div ="container d-flex">
 
-            <div>
-                <label for="Genero:_">Genero</label>
-                @Html.RadioButton("Genero", "Masculino", false, new{id="masculino"})
-                @Html.RadioButton("Genero", "Femenino", false, new { id = "femenino" })
-            </div>
+            <div class="d-flex">
+                <div>
+                    <div class="d-flex">
+                        <div class="col-6 pr-3">
 
-            <div>
-                <label for="Puesto:_">Puestos</label>
-                @Html.DropDownList("id", ViewData["listadoDePuestos"] as SelectList, "Seleccione un puesto", new { @class = "form-control" })
-            </div>
+                            <label for="Nombre:_">Nombre</label>
+                            @Html.TextBox("txtNombre", "", new { @class = "form-control" })
 
-            <div>
-                <form asp-action="SubirArchivo" method="post" enctype="multipart/form-data">
-                    <i class="bi bi-person-bounding-box"></i>
-                    <div class="form-group">
-                        <label for="archivo">Seleccione el archivo a cargar</label>
-                        <input type="file" class="form-control" id="archivo" name="archivo">
-                        <input type="text" id="archivo" name="archivo" />
+                        </div>
+
+                        <div class="col-6 pl-3">
+                            <lable for="Apellido:_">Apellido</lable>
+                            @Html.TextBox("txtApellido", "", new { @class = "form-control" })
+                        </div>
                     </div>
-                </form>
+
+                    <div>
+                        <label for="Email:_">Email</label>
+                        @Html.TextBox("txtEmail", "", new { @class = "form-control" })
+                        <br />
+                        <label for="Direccion:_">Dirección</label>
+                        @Html.TextBox("txtDireccion", "", new { @class = "form-control" })
+                    </div>
+
+                    <div class="d-flex">
+
+                        <div class="p-5">
+                            <label for="Departamento:_">Departamentos</label>
+                            <br />
+                            @Html.DropDownList("id_departamento", ViewData["listadoDeDepartamento"] as SelectList, "Seleccione un departamento", new { @class = "form-control" })
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="p-5">
+                            <label for="Genero:_">Genero</label>
+                            <br />
+                            @Html.RadioButton("Genero", "Masculino", false, new { id = "masculino" })
+                            Masculino
+                            @Html.RadioButton("Genero", "Femenino", false, new { id = "femenino" })
+                            Femenino
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="p-5">
+                            <label for="Puesto:_">Puestos</label>
+                            @Html.DropDownList("id_departamento", ViewData["listadoDeDepartamento"] as SelectList, "Seleccione un departamento", new { @class = "form-control" })
+
+                            @* @Html.DropDownList("id_puesto", ViewData["listadoDePuestos"] as SelectList, "Seleccione un puesto", new { @class = "form-control" }) *@
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="mx-auto p-5">
+                    <form asp-action="SubirArchivo" method="post" enctype="multipart/form-data">
+                        <img src="/css/person-bounding-box.svg " height="200px"></i>
+                        <div class="form-group">
+                            <label for="archivo">Seleccione el archivo a cargar</label>
+                            <input type="file" class="form-control" id="archivo" name="archivo">
+                            <button type="submit" class="btn btn-success mb-2 ">Guardar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <div>
@@ -72,19 +103,29 @@
                         @foreach (var todo in (IEnumerable<dynamic>)ViewData["listadoDeClientes"])
                         {
                             <tr>
-                                <td>@todo.nombre @todo.apellido</td>
+                                <td>@todo.nombre</td>
+                                <td>@todo.apellido</td>
                                 <td>@todo.email</td>
                                 <td>@todo.direccion</td>
                                 <td>@todo.departamento</td>
                                 <td>@todo.genero</td>
                                 <td>@todo.puesto</td>
-                                <td> <button type="button" class="btn btn-danger">ELIMINAR</button> </td>
+                                <td> <button class="btn btn-danger" action="no">ELIMINAR</button> </td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
+    <footer class="border-top footer  bg-primary text-white text-center">
+        <p>2022MG601 OSCAR RAUL MARTINEZ GARCIA</p>
+        <p>2022VD601 ROXANA MICHELLE VALENCIA DIAZ</p>
+    </footer>
+
+
+
+
 
 </div>
