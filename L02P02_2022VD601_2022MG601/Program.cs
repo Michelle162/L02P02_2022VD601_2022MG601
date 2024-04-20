@@ -1,7 +1,22 @@
+using L02P02_2022VD601_2022MG601.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<usuariosDBContex>(options =>
+options.UseSqlServer(
+	builder.Configuration.GetConnectionString("usuariosDBConnection")
+	)
+);
+	
+	
+
+
 
 var app = builder.Build();
 
