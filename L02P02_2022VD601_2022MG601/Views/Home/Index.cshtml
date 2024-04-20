@@ -30,7 +30,7 @@
         <div class="d-flex">
 
             <div>
-                <label for="Departamento:_"></label>
+                <label for="Departamento:_">Departamentos</label>
                 @Html.DropDownList("id", ViewData["listadoDeDepartamento"] as SelectList, "Seleccione un departamento", new {@class = "form-control" })
             </div>
 
@@ -40,6 +40,38 @@
                 @Html.RadioButton("Genero", "Femenino", false, new { id = "femenino" })
             </div>
 
+            <div>
+                <label for="Puesto:_">Puestos</label>
+                @Html.DropDownList("id", ViewData["listadoDePuestos"] as SelectList, "Seleccione un puesto", new { @class = "form-control" })
+            </div>
+
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre Completo</th>
+                            <th>Email</th>
+                            <th>Dirección</th>
+                            <th>Departamento</th>
+                            <th>Genero</th>
+                            <th>Puesto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var todo in (IEnumerable<dynamic>)ViewData["listadoDeClientes"])
+                        {
+                            <tr>
+                                <td>@todo.nombre @todo.apellido</td>
+                                <td>@todo.email</td>
+                                <td>@todo.direccion</td>
+                                <td>@todo.departamento</td>
+                                <td>@todo.genero</td>
+                                <td>@todo.puesto</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

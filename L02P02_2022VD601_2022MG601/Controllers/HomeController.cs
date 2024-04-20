@@ -34,6 +34,28 @@ namespace L02P02_2022VD601_2022MG601.Controllers
 
 			ViewData["listadoDeDepartamento"] = new SelectList(listaDeDepartamento, "id", "departamento");
 
+
+            var listaDePuesto = (from p in _context.puestos
+                                       select p).ToList();
+
+            ViewData["listadoDePuesto"] = new SelectList(listaDePuesto, "id", "puesto");
+
+
+
+            var listadoDeClientes = (from c in _context.clientes
+									 join p in _context.puestos on c.id_puesto equals p.id
+									 join d in _context.departamentos on c.id_departamento equals d.id
+									 select new
+									 {
+										 nombre = c.nombre,
+										 email = c.email,
+										 direccion = c.direccion,
+										 departamento = d.departamento,
+										 genero = c.genero,
+										 puesto = p.puesto
+									 }).ToList();
+			ViewData["listadoDeClientes"] = listadoDeClientes;
+
 			return View();
 		}
 
