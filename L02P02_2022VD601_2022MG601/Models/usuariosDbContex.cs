@@ -7,5 +7,8 @@ namespace L02P02_2022VD601_2022MG601.Models
 		{
 		
 		}
+		public DbSet<clientes> clientes { get; set; }
+		public DbSet<departamentos> departamentos { get; set; }	
+		public DbSet<puestos> puestos { get; set; }
 	}
 }

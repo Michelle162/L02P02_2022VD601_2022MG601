@@ -31,8 +31,13 @@
 
             <div>
                 <label for="Departamento:_"></label>
-                IEnumerable<clientes> strList = new List<clientes>{};
+                @Html.DropDownList("id", ViewData["listadoDeDepartamento"] as SelectList, "Seleccione un departamento", new {@class = "form-control" })
+            </div>
 
+            <div>
+                <label for="Genero:_">Genero</label>
+                @Html.RadioButton("Genero", "Masculino", false, new{id="masculino"})
+                @Html.RadioButton("Genero", "Femenino", false, new { id = "femenino" })
             </div>
 
         </div>
