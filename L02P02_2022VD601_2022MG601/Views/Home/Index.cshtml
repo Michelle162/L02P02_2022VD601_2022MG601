@@ -46,6 +46,17 @@
             </div>
 
             <div>
+                <form asp-action="SubirArchivo" method="post" enctype="multipart/form-data">
+                    <i class="bi bi-person-bounding-box"></i>
+                    <div class="form-group">
+                        <label for="archivo">Seleccione el archivo a cargar</label>
+                        <input type="file" class="form-control" id="archivo" name="archivo">
+                        <input type="text" id="archivo" name="archivo" />
+                    </div>
+                </form>
+            </div>
+
+            <div>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -67,6 +78,7 @@
                                 <td>@todo.departamento</td>
                                 <td>@todo.genero</td>
                                 <td>@todo.puesto</td>
+                                <td> <button type="button" class="btn btn-danger">ELIMINAR</button> </td>
                             </tr>
                         }
                     </tbody>
